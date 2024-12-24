@@ -9,9 +9,9 @@ def view_students():
         print(f"Name: {student['name']}, Age: {student['age']}, Grade: {student['grade']}")
 
 def delete_student(name):
-    for student in students:
-      if student["name"]==name:
-        del student
+    global students
+    students = [student for student in students if student['name'] != name]
+    print(f"Student {name} has been deleted." if len(students) < len(students) else "Student not found.")
 
 def filter_students_by_grade(grade):
     filtered_students = [student for student in students if student['grade'] == grade]
